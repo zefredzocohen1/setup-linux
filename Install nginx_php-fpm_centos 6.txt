@@ -107,3 +107,31 @@ vi /etc/nginx/conf.d/default.conf
 		    }
 
 		}
+
+***************************************************
+*************unistall nginx**************
+***************************************************
+
+
+sudo systemctl stop nginx.service
+sudo systemctl disable nginx.service
+ sudo userdel -r nginx
+
+sudo rm -rf /etc/nginx
+sudo rm -rf /var/log/nginx
+sudo rm -rf /var/cache/nginx/
+sudo rm -rf /usr/lib/systemd/system/nginx.service
+yum remove nginx
+
+
+use admin
+
+db.createUser(
+{
+    user: "admin",
+    pwd: "admin",
+    roles: [ "root" ]
+})
+
+
+sudo yum install -y mongodb-org-3.6.4 mongodb-org-server-3.6.4 mongodb-org-shell-3.6.4 mongodb-org-mongos-3.6.4 mongodb-org-tools-3.6.4sudo yum install -y mongodb-org
