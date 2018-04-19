@@ -1,0 +1,109 @@
+/*
+Install nginx
+    link :https://www.thuysys.com/server-vps/web-server/lemp-1-gioi-thieu-va-cau-hinh-nginx-1-9-12-tren-vps-cai-centos-7.html
+    https://hocvps.com/add-website-tren-vps-nginx-centos/
+*/
+/*
+
+*/
+Link refer
+https://www.youtube.com/watch?v=yMYJu9feKHw
+
+***************************************************
+*************install laravel project**************
+***************************************************
+
+composer create-project --prefer-dist laravel/laravel blog
+php artisan key:generate
+
+
+***************************************************
+*************install epel-release**************
+***************************************************
+
+yum install epel-release -y
+yum install nginx -y
+service nginx start
+chkconfig nginx on
+rpm -Uvh remi-release-6*.rpm
+
+***************************************************
+*************install php-fpm 7.1 **************
+***************************************************
+
+	yum install php-fpm php php-devel -y --enablerepo=remi-php71
+	yum install php-mbstring php-mcrypt php-soap php-apc -y --enablerepo=remi-php71
+	yum install gd-last --enablerepo=remi
+	yum groupinstall "PHP Support" --enablerepo=remi-php71 -y
+start php-fpm
+	service php-fpm start
+
+chkconfig php-fpm on
+
+***************************************************
+*************config php-fpm**************
+***************************************************
+
+vim /etc/php-fpm.d/www.conf
+	user = nginx
+	group = nginx
+	listen = /var/run/php71-fpm.sock
+	listen.owner = nginx
+	listen.group = nginx 
+
+
+***************************************************
+*************set permisson on laravel**************
+***************************************************
+
+chown -R nginx:nginx myproject
+chmod -R 777 myproject/storage/
+
+***************************************************
+*************disabled secure on centos*************
+***************************************************
+vim /etc/sysconfig/selinux 
+SELINUX=disabled
+ 
+
+setenforce 0
+
+***************************************************
+*************config nginx default**************
+***************************************************
+
+vi /etc/nginx/conf.d/default.conf 
+
+		server {
+		    listen       80;
+		    server_name  weechat.com www.weechat.com;
+		    root         /var/www/weechat.com/public;
+		    index index.php index.html index.htm;
+
+		    # Load configuration files for the default server block.
+		    include /etc/nginx/default.d/*.conf;
+
+		    location / {
+		        try_files $uri $uri/ /index.php?$query_string;
+		    }
+
+		    location ~ \.php$ {
+		        try_files $uri /index.php =404;
+		        	#fastcgi_pass 127.0.0.1:9000;
+	                fastcgi_pass unix:/var/run/php71-fpm.sock;
+		        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	                fastcgi_max_temp_file_size 0;
+	                fastcgi_buffer_size 4k;
+	                fastcgi_buffers 64 4k;
+	                include fastcgi_params;
+		    }
+
+		    error_page 404 /404.html;
+		        location = /40x.html {
+		    }
+
+		    error_page 500 502 503 504 /50x.html;
+		        location = /50x.html {
+		    }
+
+		}

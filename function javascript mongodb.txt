@@ -1,0 +1,16 @@
+// delete mongodb collection by key
+deleteCollectionStartByName
+function(name) {
+    db.getCollectionNames().forEach(
+        function(c){
+            if(c.indexOf(name) >= 0){
+                 print( "dropping collection " + c );  
+                db[c].drop();
+            }
+        }
+    );
+}
+
+//run exaple
+db.loadServerScripts(); 
+deleteCollectionStartByName("exceptions")

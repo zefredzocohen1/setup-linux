@@ -1,0 +1,32 @@
+****error laravel install packeage***
+	gulp error laravel-
+		npm install --no-optional
+		npm install -–no-bin-links 
+		npm install --no-bin-links
+   sudo npm install --no-bin-links
+		npm rebuild node-sass
+		
+version install ubutu
+ubutu 16.02
+node 6.12
+npm 3.10	
+		
+		
+	forever restart line.js
+	
+	
+	step one : sudo npm -g install npm@latest
+
+stepe two:
+
+sudo npm install gulp --no-bin-link
+
+sudo curl -L npmjs.org/install.sh | sudo sh
+
+sudo service mongod restart
+add m
+sudo vi /etc/php/7.2/fpm/php.ini
+sudo vi /etc/php/7.2/php.ini
+
+sudo systemctl restart php7.2-fpm
+sudo service php7.2-fpm restart

@@ -1,0 +1,8 @@
+/*
+Install nginx
+    link :https://www.thuysys.com/server-vps/web-server/lemp-1-gioi-thieu-va-cau-hinh-nginx-1-9-12-tren-vps-cai-centos-7.html
+    https://hocvps.com/add-website-tren-vps-nginx-centos/
+*/
+/*
+
+*/

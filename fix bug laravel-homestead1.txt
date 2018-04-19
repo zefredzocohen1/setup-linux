@@ -1,0 +1,23 @@
+gulp watch error
+	chưa cài npm
+	gp: cài npm
+		chmod direc npm
+		npm cache clear
+		npm update
+		npm rebuild node-sass
+		
+		sudo service mongod restart
+add m
+sudo vi /etc/php/7.2/fpm/php.ini
+sudo vi /etc/php/7.2/php.ini
+
+sudo systemctl restart php7.2-fpm
+sudo service php7.2-fpm restart
+
+
+// lỗi trên php 7.2 hàm count
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    // Ignores notices and reports all other kinds... and warnings
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+    // error_reporting(E_ALL ^ E_WARNING); // Maybe this is enough
+}
