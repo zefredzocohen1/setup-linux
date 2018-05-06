@@ -16,6 +16,13 @@ https://www.youtube.com/watch?v=yMYJu9feKHw
 composer create-project --prefer-dist laravel/laravel blog
 php artisan key:generate
 
+***************************************************
+*************install mongodb driver**************
+*************install php 7.1**************
+***************************************************
+sudo pecl install mongodb
+
+
 
 ***************************************************
 *************install epel-release**************
@@ -135,3 +142,17 @@ db.createUser(
 
 
 sudo yum install -y mongodb-org-3.6.4 mongodb-org-server-3.6.4 mongodb-org-shell-3.6.4 mongodb-org-mongos-3.6.4 mongodb-org-tools-3.6.4sudo yum install -y mongodb-org
+
+***************************************************
+*************unistall nginx**************
+************************************************
+
+  yum install libpng-devel  
+ npm install --save-dev cross-env  
+npm install webpack 
+
+***************************************************
+*************check port on server**************
+************************************************
+netstat -tulpn
+netstat -tlpn| grep nginx
