@@ -1,3 +1,8 @@
+/pass
+101.99.6.26
+
+chatserver         123qweA@
+
 /*
 Install nginx
     link :https://www.thuysys.com/server-vps/web-server/lemp-1-gioi-thieu-va-cau-hinh-nginx-1-9-12-tren-vps-cai-centos-7.html
@@ -5,6 +10,9 @@ Install nginx
 */
 /*
 
+sudo yum install epel-release -y
+
+sudo yum install nginx -y 
 */
 Link refer
 https://www.youtube.com/watch?v=yMYJu9feKHw
@@ -32,11 +40,19 @@ yum install epel-release -y
 yum install nginx -y
 service nginx start
 chkconfig nginx on
+
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+wget http://rpms.remirepo.net/enterprise/remi-release-6.rpm
+rpm -Uvh remi-release-6.rpm epel-release-latest-6.noarch.rpm
+rhn-channel --add --channel=rhel-$(uname -i)-server-optional-6
+
 rpm -Uvh remi-release-6*.rpm
 
 ***************************************************
 *************install php-fpm 7.1 **************
 ***************************************************
+
+yum install php71-php-pear php71-php-bcmath php71-php-pecl-jsond-devel php71-php-mysqlnd php71-php-gd php71-php-common php71-php-fpm php71-php-intl php71-php-cli php71-php php71-php-xml php71-php-opcache php71-php-pecl-apcu php71-php-pecl-jsond php71-php-pdo php71-php-gmp php71-php-process php71-php-pecl-imagick php71-php-devel php71-php-mbstring
 
 	yum install php-fpm php php-devel -y --enablerepo=remi-php71
 	yum install php-mbstring php-mcrypt php-soap php-apc -y --enablerepo=remi-php71
@@ -156,3 +172,4 @@ npm install webpack
 ************************************************
 netstat -tulpn
 netstat -tlpn| grep nginx
+ sudo find / -name php.ini
